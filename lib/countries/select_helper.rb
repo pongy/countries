@@ -4,7 +4,7 @@ module ActionView
     module FormOptionsHelper
 
       def country_select(object, method, priority_countries = nil, options = {}, html_options = {})
-        InstanceTag.new(object, method, self, options.delete(:object)).to_country_select_tag(priority_countries, options, html_options)
+        InstanceTag.new(object, method, self, options.delete(:object)).to_country_select_tag(priority_countries, options, html_options).html_safe
       end
 
       def country_options_for_select(selected = nil, priority_countries = nil)
@@ -19,7 +19,7 @@ module ActionView
         countries = ISO3166::Country::Names.map{|(name,alpha2)| [name.html_safe,alpha2] }
         country_options += options_for_select(countries, selected)
 
-        return country_options.html_safe
+        return country_options
       end
     end
 
