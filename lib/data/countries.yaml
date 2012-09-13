@@ -6057,7 +6057,7 @@ TW:
   ioc: TPE
   latitude: "23 30 N"
   longitude: "121 00 E"
-  name: "Taiwan, Province Of China"
+  name: "Taiwan"
   names: 
     - Taiwan
     - Taiwán
@@ -6399,7 +6399,7 @@ VN:
   ioc: VIE
   latitude: "16 10 N"
   longitude: "107 50 E"
-  name: "Viet Nam"
+  name: "Vietnam"
   names: 
     - Vietnam
   national_destination_code_lengths: 
