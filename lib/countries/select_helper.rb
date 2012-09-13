@@ -13,12 +13,12 @@ module ActionView
         if priority_countries
           priority_countries = [*priority_countries].map {|x| [x.html_safe,ISO3166::Country::NameIndex[x]] }
           country_options += options_for_select(priority_countries, selected)
-          country_options += "<option value=\"\" disabled=\"disabled\">-------------</option>\n".try(:html_safe)
+          country_options += "<option value=\"\" disabled=\"disabled\">-------------</option>\n"
         end
 
         countries = ISO3166::Country::Names.map{|(name,alpha2)| [name.html_safe,alpha2] }
 
-        return country_options + options_for_select(countries, selected)
+        return country_options.try(:html_safe) + options_for_select(countries, selected)
       end
     end
 
