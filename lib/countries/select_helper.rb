@@ -4,7 +4,7 @@ module ActionView
     module FormOptionsHelper
 
       def country_select(object, method, priority_countries = nil, options = {}, html_options = {})
-        InstanceTag.new(object, method, self, options.delete(:object)).to_country_select_tag(priority_countries, options, html_options).html_safe
+        InstanceTag.new(object, method, self, options.delete(:object)).to_country_select_tag(priority_countries, options, html_options)
       end
 
       def country_options_for_select(selected = nil, priority_countries = nil)
@@ -13,7 +13,7 @@ module ActionView
         if priority_countries
           priority_countries = [*priority_countries].map {|x| [x.html_safe,ISO3166::Country::NameIndex[x]] }
           country_options += options_for_select(priority_countries, selected)
-          country_options += "<option disabled>-------------</option>\n"
+          country_options += options_for_select(["-------------"], :disabled => "-------------")
         end
 
         countries = ISO3166::Country::Names.map{|(name,alpha2)| [name.html_safe,alpha2] }
