@@ -18,7 +18,7 @@ module ActionView
 
         countries = ISO3166::Country::Names.map{|(name,alpha2)| [name.html_safe,alpha2] }
 
-        return country_options.try(:html_safe) + options_for_select(countries, selected)
+        return country_options + options_for_select(countries, selected)
       end
     end
 
@@ -29,7 +29,7 @@ module ActionView
         value = options.delete(:selected) || value(object)
         content_tag("select",
           add_options(
-            country_options_for_select(value, priority_countries),
+            country_options_for_select(value, priority_countries).try(:html_safe),
             options, value
           ), html_options
         )
